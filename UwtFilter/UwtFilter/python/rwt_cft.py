@@ -1,3 +1,5 @@
+# coding: utf-8
+
 import os
 
 import FWCore.ParameterSet.Config as cms
@@ -24,7 +26,7 @@ process.options = cms.untracked.PSet(
     wantSummary=cms.untracked.bool(True),
 )
 
-process.TestRwt = cms.EDFilter("Uwt", ifkeep = cms.int32(1))
+process.UwtFilter = cms.EDFilter("UwtFilter", ifkeep = cms.InputTag("RwtUwt","ifkeep"))
 
 # setup MyPlugin by loading the auto-generated cfi (see MyPlugin.fillDescriptions)
 #process.load("XGB_Example.XGBoostExample.XGBoostExample_cfi")
@@ -33,20 +35,14 @@ process.TestRwt = cms.EDFilter("Uwt", ifkeep = cms.int32(1))
 
 # define what to run in the path
 
-
-# process.Tracer = cms.Service("Tracer")
+process.out = cms.OutputModule("PoolOutputModule",
+    SelectEvents = cms.untracked.PSet(
+        SelectEvents = cms.vstring('p1')
+    ),
+    fileName = cms.untracked.string('test_filtering.root')
+)
 
 process.maxEvents.input = 2000
 
-# process.TFileService = cms.Service("TFileService", 
-#     fileName = cms.string("TestRwt.root"),
-#     closeFileFast = cms.untracked.bool(True)
-# )
-
-
-process.out = cms.OutputModule("PoolOutputModule",
-    fileName = cms.untracked.string('myOutputFile.root'),
-    outputCommands = cms.untracked.vstring('keep *',)
-
-)
-process.p = cms.Path(process.TestRwt)
+process.p1 = cms.Path(process.UwtFilter)
+process.e = cms.EndPath(process.out)
