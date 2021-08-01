@@ -30,6 +30,11 @@ process.RwtUwt = cms.EDProducer("RwtUwt", generator =  cms.InputTag("generator")
                                     genSrc =  cms.InputTag("genParticles"),
                                     src = cms.InputTag("Src"))
 
+process.RwtUwt.filePath="$CMSSW_BASE/TestRwt/TestRwt/python/TestRwt.root"
+process.RwtUwt.dirName="TestRwt"
+process.RwtUwt.name4Rwt="h_leppt_cpp"
+process.RwtUwt.name4Raw="h_leppt_cpp_raw"
+
 # setup MyPlugin by loading the auto-generated cfi (see MyPlugin.fillDescriptions)
 #process.load("XGB_Example.XGBoostExample.XGBoostExample_cfi")
 # process.XGBoostExample.model_path = cms.string("/Your/Path/data/lowVer.model")

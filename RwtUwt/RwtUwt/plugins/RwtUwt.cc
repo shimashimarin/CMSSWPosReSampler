@@ -128,10 +128,10 @@ RwtUwt::RwtUwt(const edm::ParameterSet& iConfig)
   hist4RwtRatio = nullptr;
   rootFile = nullptr;
 
-  fileName = "/home/pku/stqian/NegWgt/CMSSW_11_3_0_pre2/src/TestRwt/TestRwt/python/TestRwt.root";
-  dirName = "TestRwt";
-  name4Rwt = "h_leppt_cpp";
-  name4Raw = "h_leppt_cpp_raw";
+  fileName = iConfig.getParameter<std::string>("fileName");
+  dirName = iConfig.getParameter<std::string>("dirName");
+  name4Rwt = iConfig.getParameter<std::string>("name4Rwt");
+  name4Raw = iConfig.getParameter<std::string>("name4Raw");
 
   genSrc_ = consumes<edm::View<reco::GenParticle>>(iConfig.getParameter<edm::InputTag>( "genSrc") ) ;
   GenToken_ = consumes<GenEventInfoProduct> (iConfig.getParameter<edm::InputTag>( "generator") ) ;
@@ -364,13 +364,16 @@ RwtUwt::endLuminosityBlock(edm::LuminosityBlock const&, edm::EventSetup const&)
 */
 
 // // ------------ method fills 'descriptions' with the allowed parameters for the module  ------------
-// void RwtUwt::fillDescriptions(edm::ConfigurationDescriptions& descriptions) {
-//   //The following says we do not know what parameters are allowed so do no validation
-//   // Please change this to state exactly what you do use, even if it is no parameters
-//   edm::ParameterSetDescription desc;
-//   desc.setUnknown();
-//   descriptions.addDefault(desc);
-// }
+void RwtUwt::fillDescriptions(edm::ConfigurationDescriptions& descriptions) {
+  //The following says we do not know what parameters are allowed so do no validation
+  // Please change this to state exactly what you do use, even if it is no parameters
+  edm::ParameterSetDescription desc;
+  desc.add<std::string>("filePath");
+  desc.add<std::string>("dirName");
+  desc.add<std::string>("name4Rwt");
+  desc.add<std::string>("name4Raw");
+  descriptions.addDefault(desc);
+}
 
 //define this as a plug-in
 DEFINE_FWK_MODULE(RwtUwt);
