@@ -283,12 +283,12 @@ void TestRwt::beginJob() {
 void TestRwt::endJob() {
   // please remove this method if not needed
   h_leppt_cpp->Print();
-  h_leppt_cpp->Write();
-  h_leppt_cpp_raw->Write();
-  h_neupt_cpp->Write();
-  h_neupt_cpp_raw->Write();
-  h_wmass_cpp->Write();
-  h_wmass_cpp_raw->Write();
+  // h_leppt_cpp->Write();
+  // h_leppt_cpp_raw->Write();
+  // h_neupt_cpp->Write();
+  // h_neupt_cpp_raw->Write();
+  // h_wmass_cpp->Write();
+  // h_wmass_cpp_raw->Write();
 
 }
 
