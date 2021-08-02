@@ -60,7 +60,7 @@ public:
   explicit RwtUwt(const edm::ParameterSet&);
   ~RwtUwt();
 
-  // static void fillDescriptions(edm::ConfigurationDescriptions& descriptions);
+  static void fillDescriptions(edm::ConfigurationDescriptions& descriptions);
 
 private:
   void beginStream(edm::StreamID) override;
