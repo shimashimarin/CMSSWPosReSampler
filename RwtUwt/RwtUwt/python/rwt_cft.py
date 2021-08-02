@@ -28,12 +28,16 @@ process.options = cms.untracked.PSet(
 
 process.RwtUwt = cms.EDProducer("RwtUwt", generator =  cms.InputTag("generator"),
                                     genSrc =  cms.InputTag("genParticles"),
-                                    src = cms.InputTag("Src"))
+                                    src = cms.InputTag("Src"),
+                                    fileName = cms.string("$CMSSW_BASE/src/TestRwt/TestRwt/python/TestRwt.root"),
+                                    dirName = cms.string("TestRwt"),
+                                    name4Rwt = cms.string("h_leppt_cpp"),
+                                    name4Raw = cms.string('h_leppt_cpp_raw'))
 
-process.RwtUwt.filePath=cms.string("$CMSSW_BASE/TestRwt/TestRwt/python/TestRwt.root")
-process.RwtUwt.dirName=cms.string("TestRwt")
-process.RwtUwt.name4Rwt=cms.string("h_leppt_cpp")
-process.RwtUwt.name4Raw=cms.string("h_leppt_cpp_raw")
+# process.RwtUwt.filePath=cms.string()
+# process.RwtUwt.dirName=cms.string("TestRwt")
+# process.RwtUwt.name4Rwt=cms.string("h_leppt_cpp")
+# process.RwtUwt.name4Raw=cms.string("h_leppt_cpp_raw")
 
 # setup MyPlugin by loading the auto-generated cfi (see MyPlugin.fillDescriptions)
 #process.load("XGB_Example.XGBoostExample.XGBoostExample_cfi")

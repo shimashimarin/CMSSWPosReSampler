@@ -60,7 +60,7 @@ public:
   explicit RwtUwt(const edm::ParameterSet&);
   ~RwtUwt();
 
-  static void fillDescriptions(edm::ConfigurationDescriptions& descriptions);
+  // static void fillDescriptions(edm::ConfigurationDescriptions& descriptions);
 
 private:
   void beginStream(edm::StreamID) override;
@@ -363,17 +363,17 @@ RwtUwt::endLuminosityBlock(edm::LuminosityBlock const&, edm::EventSetup const&)
 }
 */
 
-// // ------------ method fills 'descriptions' with the allowed parameters for the module  ------------
-void RwtUwt::fillDescriptions(edm::ConfigurationDescriptions& descriptions) {
-  //The following says we do not know what parameters are allowed so do no validation
-  // Please change this to state exactly what you do use, even if it is no parameters
-  edm::ParameterSetDescription desc;
-  desc.add<std::string>("filePath");
-  desc.add<std::string>("dirName");
-  desc.add<std::string>("name4Rwt");
-  desc.add<std::string>("name4Raw");
-  descriptions.addDefault(desc);
-}
+// // // ------------ method fills 'descriptions' with the allowed parameters for the module  ------------
+// void RwtUwt::fillDescriptions(edm::ConfigurationDescriptions& descriptions) {
+//   //The following says we do not know what parameters are allowed so do no validation
+//   // Please change this to state exactly what you do use, even if it is no parameters
+//   edm::ParameterSetDescription desc;
+//   desc.add<std::string>("filePath");
+//   desc.add<std::string>("dirName");
+//   desc.add<std::string>("name4Rwt");
+//   desc.add<std::string>("name4Raw");
+//   descriptions.addDefault(desc);
+// }
 
 //define this as a plug-in
 DEFINE_FWK_MODULE(RwtUwt);
